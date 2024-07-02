@@ -29,8 +29,8 @@ jobs:
           latest_files=$(for file in $xml_files; do
             echo "$(git log -1 --format="%at" -- $file) $file"
           done | sort -nr | head -n 2 | awk '{print $2}')
-          echo "XML_FILE1=$(echo $latest_files | awk '{print $1}')" >> $GITHUB_ENV
-          echo "XML_FILE2=$(echo $latest_files | awk '{print $2}')" >> $GITHUB_ENV
+          echo "XML_FILE1=$(echo $latest_files | awk '{print $2}')" >> $GITHUB_ENV
+          echo "XML_FILE2=$(echo $latest_files | awk '{print $1}')" >> $GITHUB_ENV
 
       - name: Run XML comparison script and generate output
         env:
