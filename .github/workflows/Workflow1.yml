@@ -65,3 +65,7 @@ jobs:
         with:
           name: Error Log for Collection1
           path: SampleArtifact/error_${{ env.TIMESTAMP }}.log
+
+      - name: Set output for Workflow 2 trigger
+        id: trigger_Workflow2
+        run: echo "::set-output name=trigger::true"
