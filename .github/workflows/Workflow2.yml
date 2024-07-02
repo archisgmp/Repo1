@@ -22,12 +22,15 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Identify most recent XML files
+      - name: Identify most recent XML files by last commit date
         id: find_xml_files
         run: |
-          latest_files=($(ls -t SampleArtifact/*.xml | head -n 2))
-          echo "XML_FILE1=${latest_files[0]}" >> $GITHUB_ENV
-          echo "XML_FILE2=${latest_files[1]}" >> $GITHUB_ENV
+          xml_files=$(git ls-tree -r --name-only HEAD SampleArtifact/*.xml)
+          latest_files=$(for file in $xml_files; do
+            echo "$(git log -1 --format="%at" -- $file) $file"
+          done | sort -nr | head -n 2 | awk '{print $2}')
+          echo "XML_FILE1=$(echo $latest_files | awk '{print $1}')" >> $GITHUB_ENV
+          echo "XML_FILE2=$(echo $latest_files | awk '{print $2}')" >> $GITHUB_ENV
 
       - name: Run XML comparison script and generate output
         env:
