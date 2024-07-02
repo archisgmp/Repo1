@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Account" tests="2" time="0.343">
+  <testsuite name="GET Request (Login)" id="e8d8a9ea-0c5e-415a-9c08-3ca2218d82c6" timestamp="2024-07-02T10:41:48.911Z" tests="5" failures="0" errors="0" time="0.266">
+    <testcase name="Response status code is 200" time="0.266" classname="Account"/>
+    <testcase name="Response has the required fields - name, email, password, and id" time="0.266" classname="Account"/>
+    <testcase name="Email is in a valid email format" time="0.266" classname="Account"/>
+    <testcase name="Password is a non-empty string" time="0.266" classname="Account"/>
+    <testcase name="ID is a non-empty string" time="0.266" classname="Account"/>
+  </testsuite>
+  <testsuite name="GET Request (Profile)" id="adba4b7a-a5c6-42d3-a533-67535d15a1a5" timestamp="2024-07-02T10:41:48.911Z" tests="4" failures="0" errors="0" time="0.077">
+    <testcase name="Response status code is 200" time="0.077" classname="Account"/>
+    <testcase name="Response has the required fields - country, phone, address, pincode and id" time="0.077" classname="Account"/>
+    <testcase name="Response time is less than 600ms" time="0.077" classname="Account"/>
+    <testcase name="Each phone number in the response body follows the format 123-456-7890" time="0.077" classname="Account"/>
+  </testsuite>
+</testsuites>
