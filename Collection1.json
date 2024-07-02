@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "1eff59f8-203d-4909-8986-8e25b7234e1a",
+		"name": "Account",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36143857"
+	},
+	"item": [
+		{
+			"name": "GET Request (Login)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 404\", function () {",
+							"    pm.expect(pm.response.code).to.equal(404);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - name, email, password, and id\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item).to.have.property('name');",
+							"        pm.expect(item).to.have.property('email');",
+							"        pm.expect(item).to.have.property('password');",
+							"        pm.expect(item).to.have.property('id');",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Email is in a valid email format\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  responseData.forEach(function(account) {",
+							"    pm.expect(account.email).to.match(/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/, \"Email format is not valid\");",
+							"  });",
+							"});",
+							"",
+							"",
+							"pm.test(\"Password is a non-empty string\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    responseData.forEach(function(account) {",
+							"        pm.expect(account.password).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Password should not be empty\");",
+							"    });",
+							"});",
+							"",
+							"",
+							"pm.test(\"ID is a non-empty string\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('array').that.is.not.empty;",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item.id).to.be.a('string').and.to.have.lengthOf.at.least(1);",
+							"    });",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomFirstName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"{{$randomPassword}}\",\n    \"id\": \"7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{secretKey}}.mockapi.io/account/Login",
+					"protocol": "https",
+					"host": [
+						"{{secretKey}}",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"account",
+						"Login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Request (Profile)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"    pm.expect(pm.response.code).to.equal(200);",
+							"});",
+							"",
+							"pm.test(\"Response has the required fields - country, phone, address, pincode and id\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData).to.be.an('array');",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item).to.have.property('country');",
+							"        pm.expect(item).to.have.property('phone');",
+							"        pm.expect(item).to.have.property('address');",
+							"        pm.expect(item).to.have.property('pincode');",
+							"        pm.expect(item).to.have.property('id');",
+							"    });",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 600ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(600);",
+							"});",
+							"",
+							"pm.test(\"Each phone number in the response body follows the format 123-456-7890\", function () {",
+							"    const responseData = pm.response.json();",
+							"    responseData.forEach(function(item) {",
+							"        pm.expect(item.phone).to.match(/^\\d{3}-\\d{3}-\\d{4}$/);",
+							"    });",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{secretKey}}.mockapi.io/account/Profile",
+					"protocol": "https",
+					"host": [
+						"{{secretKey}}",
+						"mockapi",
+						"io"
+					],
+					"path": [
+						"account",
+						"Profile"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "secretKey",
+			"value": "6673f2fd75872d0e0a947393",
+			"type": "string"
+		}
+	]
+}

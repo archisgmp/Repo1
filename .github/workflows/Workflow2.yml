@@ -1,0 +1,72 @@
+name: Workflow 2
+
+# Generating a comparison report with a unique name, of the XML reports on the main branch onto the output folder
+
+on:
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  compare_xml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Identify most recent XML files
+        id: find_xml_files
+        run: |
+          ls -t SampleArtifact/*.xml | head -n 2 > xml_files.txt
+          echo "::set-output name=file1::$(sed -n '1p' xml_files.txt)"
+          echo "::set-output name=file2::$(sed -n '2p' xml_files.txt)"
+
+      - name: Set environment variables for XML comparison
+        run: |
+          echo "XML_FILE1=$(cat xml_files.txt | head -n 1)" >> $GITHUB_ENV
+          echo "XML_FILE2=$(cat xml_files.txt | tail -n 1)" >> $GITHUB_ENV
+
+      - name: Run XML comparison script and generate output
+        env:
+          XML_FILE1: ${{ env.XML_FILE1 }}
+          XML_FILE2: ${{ env.XML_FILE2 }}
+        run: |
+          python compare_xml.py > SampleArtifact/comparison_output.txt
+
+      - name: Create Outputs directory if not exists
+        run: mkdir -p SampleArtifact/Outputs
+
+      - name: Generate unique filename with timestamp
+        id: generate_filename
+        run: echo "::set-output name=filename::comparison_output_$(date +%Y%m%d%H%M%S).txt"
+
+      - name: Move comparison output to Outputs directory with unique filename
+        run: mv SampleArtifact/comparison_output.txt SampleArtifact/Outputs/${{ steps.generate_filename.outputs.filename }}
+
+      - name: Commit and push comparison result to main branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "archisgmp"
+          git config --global user.email "archis@getmyparking.com"
+          git checkout main
+          git pull
+          mkdir -p SampleArtifact
+          cp -r SampleArtifact/* .
+          git add SampleArtifact/*
+          git commit -m "Add comparison output"
+          git push
+          
+      - name: Publish comparison result
+        uses: actions/upload-artifact@v2
+        with:
+          name: XML Comparison Result
+          path: SampleArtifact/Outputs/${{ steps.generate_filename.outputs.filename }}
