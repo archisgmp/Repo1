@@ -17,9 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune --unshallow
-
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -28,11 +25,14 @@ jobs:
       - name: Identify most recent XML files
         id: find_xml_files
         run: |
-          mkdir -p SampleArtifact
-          git checkout main
           ls -t SampleArtifact/*.xml | head -n 2 > xml_files.txt
           echo "XML_FILE1=$(sed -n '1p' xml_files.txt)" >> $GITHUB_ENV
           echo "XML_FILE2=$(sed -n '2p' xml_files.txt)" >> $GITHUB_ENV
+
+      - name: Set environment variables for XML comparison
+        run: |
+          echo "XML_FILE1=$(cat xml_files.txt | head -n 1)" >> $GITHUB_ENV
+          echo "XML_FILE2=$(cat xml_files.txt | tail -n 1)" >> $GITHUB_ENV
 
       - name: Run XML comparison script and generate output
         env:
