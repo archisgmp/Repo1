@@ -7,6 +7,7 @@ on:
     workflows: ["Workflow 1"]
     types:
       - completed
+  workflow_dispatch:
 
 jobs:
   compare_xml:
