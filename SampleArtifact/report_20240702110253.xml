@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Account" tests="2" time="0.292">
+  <testsuite name="GET Request (Login)" id="fd5683e7-06ed-4579-98be-eaa08d3b9fcf" timestamp="2024-07-02T11:03:02.806Z" tests="5" failures="1" errors="0" time="0.273">
+    <testcase name="Response status code is 400" time="0.273" classname="Account">
+      <failure type="AssertionFailure" message="expected 200 to equal 400">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 1eff59f8-203d-4909-8986-8e25b7234e1a.]]>
+        <![CDATA[Collection name: Account.]]>
+        <![CDATA[Request name: GET Request (Login).]]>
+        <![CDATA[Test description: Response status code is 400.]]>
+        <![CDATA[Error message: expected 200 to equal 400.]]>
+        <![CDATA[Stacktrace: AssertionError: expected 200 to equal 400
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+    <testcase name="Response has the required fields - name, email, password, and id" time="0.273" classname="Account"/>
+    <testcase name="Email is in a valid email format" time="0.273" classname="Account"/>
+    <testcase name="Password is a non-empty string" time="0.273" classname="Account"/>
+    <testcase name="ID is a non-empty string" time="0.273" classname="Account"/>
+  </testsuite>
+  <testsuite name="GET Request (Profile)" id="0472640b-cfc7-4a15-a0fb-1e5fc40a04e2" timestamp="2024-07-02T11:03:02.806Z" tests="4" failures="0" errors="0" time="0.019">
+    <testcase name="Response status code is 200" time="0.019" classname="Account"/>
+    <testcase name="Response has the required fields - country, phone, address, pincode and id" time="0.019" classname="Account"/>
+    <testcase name="Response time is less than 600ms" time="0.019" classname="Account"/>
+    <testcase name="Each phone number in the response body follows the format 123-456-7890" time="0.019" classname="Account"/>
+  </testsuite>
+</testsuites>
