@@ -3,10 +3,10 @@ name: Workflow 2
 # Generating a comparison report with a unique name, of the XML reports on the main branch onto the output folder
 
 on:
-  # push:
-  #   branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
+  workflow_run:
+    workflows: "Workflow1"
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
