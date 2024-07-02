@@ -1,7 +1,0 @@
-File 1 - Test Failures in report_20240702102024.xml:
-  Test Suite - GET Request (Login)
-  Test Case - Response status code is 404
-  Failure Message - expected 200 to equal 404
-
-File 2 - Test Failures in report_20240702102254.xml:
-  No failures.
