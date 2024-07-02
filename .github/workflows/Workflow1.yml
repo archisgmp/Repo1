@@ -1,36 +1,67 @@
-# This is a basic workflow to help you get started with Actions
+name: Workflow 1
 
-name: CI
+# Generating an XML report and saving it onto the main branch.
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  # push:
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Creating directory for artifacts
+        run: mkdir -p SampleArtifact
+      
+      - name: Setting up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.3.0
+          
+      - name: Installing Newman
+        run: sudo npm i newman@latest
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Generating unique timestamp
+        id: timestamp
+        run: echo "TIMESTAMP=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+         
+      - name: Running Postman Collection 1 and generating JUnit XML report
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          mkdir -p SampleArtifact
+          newman run "Collection1.json" -r junit --reporter-junit-export "SampleArtifact/report_${{ env.TIMESTAMP }}.xml" || echo "Collection1 failed" >> SampleArtifact/error_${{ env.TIMESTAMP }}.log
+
+      - name: Listing files in SampleArtifact directory
+        run: ls -al SampleArtifact
+
+      - name: Commit and push reports to the main branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "archisgmp"
+          git config --global user.email "archis@getmyparking.com"
+          git checkout main
+          git pull
+          mkdir -p SampleArtifact
+          cp -r SampleArtifact/* .
+          git add SampleArtifact/*
+          git commit -m "Add new report and error log"
+          git push
+
+      - name: Publishing JUnit XML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: JUnit Report for Collection1
+          path: SampleArtifact/report_${{ env.TIMESTAMP }}.xml
+
+      - name: Publishing error log (if any)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Error Log for Collection1
+          path: SampleArtifact/error_${{ env.TIMESTAMP }}.log
