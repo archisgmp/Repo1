@@ -1,0 +1,12 @@
+File 1 - Test Failures in report_20240704105731.xml:
+  Test Suite - GET Request (Login)
+  Test Case - Response status code is 404
+  Failure Message - expected 200 to equal 404
+
+File 2 - Test Failures in report_20240704110003.xml:
+  Test Suite - GET Request (Login)
+  Test Case - Response status code is 404
+  Failure Message - expected 200 to equal 404
+
+
+The files report_20240704105731.xml and report_20240704110003.xml are identical.
