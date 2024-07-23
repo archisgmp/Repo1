@@ -1,0 +1,2100 @@
+{
+	"info": {
+		"_postman_id": "0bad55cd-7768-404f-a196-e3ae251f35c9",
+		"name": "Integration Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29478193"
+	},
+	"item": [
+		{
+			"name": "App",
+			"item": [
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "Sign Up",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var requestBody = JSON.parse(pm.request.body.raw);",
+											"var email = requestBody.email;",
+											"var password = requestBody.password;",
+											"pm.environment.set(\"email\", email);",
+											"pm.environment.set(\"password\", password);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"alt.nk-2ovka8bg@yopmail.com\",\n    \"password\": \"GMPTest7*\",\n    \"socialId\": null,\n    \"socialLoginType\": null,\n    \"deviceType\": \"ANDROID\",\n    \"firstName\": \"GMP\",\n    \"lastName\": \"Test\",\n    \"promotionsEnabled\": 1,\n    \"countryCode\": null,\n    \"locationCode\": \"NM\",\n    \"referralCode\": \"\",\n    \"signUpMethod\": null,\n    \"phoneNumber\": null,\n    \"phoneNumberCountryCode\": null,\n    \"tncVersion\": null,\n    \"acceptTnC\": null,\n    \"acceptDataPolicy\": null,\n    \"addAddressRequest\": null,\n    \"accountType\": null,\n    \"vehicleNumber\": null,\n    \"externalId\": null,\n    \"signUpChannel\": null,\n    \"reservationCheckRequired\": false,\n    \"cpmsKey\": null,\n    \"signUpOrLoginRequestAt\": null\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/signUp",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"signUp"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Email Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"consumer_id\", pm.response.json().userId);",
+											"",
+											"pm.environment.set(\"auth_token\", pm.response.json().authToken);",
+											"",
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n    \"locationCode\": \"NM\",\n    \"signUpMethod\": \"EMAIL\",\n    \"phoneNumber\": null,\n    \"phoneNumberCountryCode\": null,\n    \"failedResponseRequired\": true,\n    \"accountType\": null\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/login",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Forgot Password",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"emailaddress\": \"{{email}}\",\n    \"phoneNumberCountryCode\": null,\n    \"phoneNumber\": null,\n    \"locationCode\": \"NM\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/forgotPassword",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"forgotPassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Social Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									},
+									{
+										"key": "x_language_code",
+										"value": "{{x_language_code}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessToken\": \"demo\",\n    \"provider\": \"GOOGLE\",\n    \"externalSocialId\": \"104536562983507838296\",\n    \"firstName\": \"GMP\",\n    \"lastName\": \"Test\",\n    \"emailAddress\": \"{{email}}\",\n    \"locationCode\": \"NM\"\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/socialLogin",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"socialLogin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Add/Edit Profile Info",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": null,\n    \"email\": null,\n    \"firstName\": \"A\",\n    \"lastName\": \"Z\",\n    \"phoneNumberCountryCode\": \"+91\",\n    \"phoneNumber\": \"1234567890\",\n    \"imageUrl\": null,\n    \"promotionsEnabled\": null,\n    \"isPaymentPendingOrFailed\": null,\n    \"pushEnabled\": null,\n    \"languageCode\": null,\n    \"isPaymentCardAdded\": null,\n    \"isRefererRewarded\": null,\n    \"isAutomaticPayment\": null,\n    \"modifyPendingOrFailedCountBy\": null,\n    \"modifySuccessfulSessionCountCountBy\": null,\n    \"updateActiveSessionsBy\": null,\n    \"password\": null,\n    \"tncVersion\": null,\n    \"consumerUserStatus\": null,\n    \"acceptTnC\": null,\n    \"acceptDataPolicy\": null,\n    \"updateVasFailedPaymentCount\": null,\n    \"gstNumber\": null,\n    \"paygInvoiceName\": null,\n    \"appliedReferralCode\": null,\n    \"parkingSessionId\": null,\n    \"name\": \"PERSONAL\",\n    \"isDefault\": 1,\n    \"consumerUserProfilePreferences\": [\n        {\n            \"id\": 12993,\n            \"entityType\": \"CONSUMER_USER_PAYMENT\",\n            \"entityId\": 26536\n        }\n    ],\n    \"status\": \"ACTIVE\",\n    \"profileType\": \"ACCOUNT\",\n    \"subCorporateId\": null,\n    \"corporateId\": null,\n    \"corporateExternalIdentifier\": null,\n    \"externalId\": null,\n    \"corporateName\": null,\n    \"subCorporateName\": null,\n    \"businessName\": null,\n    \"vatId\": null,\n    \"costCenterId\": null,\n    \"businessAddress\": null,\n    \"isCorporatePay\": null,\n    \"evPaidByCorporate\": null\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/checkFieldUpdate?fieldType={{field_type}}&fieldValue={{new_email}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"checkFieldUpdate"
+									],
+									"query": [
+										{
+											"key": "fieldType",
+											"value": "{{field_type}}"
+										},
+										{
+											"key": "fieldValue",
+											"value": "{{new_email}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Email",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5020/v1/consumers/verifyEmail?emailAddress={{email}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5020",
+									"path": [
+										"v1",
+										"consumers",
+										"verifyEmail"
+									],
+									"query": [
+										{
+											"key": "emailAddress",
+											"value": "{{email}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Password",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var requestBody = JSON.parse(pm.request.body.raw);",
+											"var password = requestBody.newPassword;",
+											"pm.environment.set(\"password\", password);",
+											"",
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"oldPassword\": \"{{password}}\",\n    \"newPassword\": \"7GMPTest*\"\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/changePassword",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"changePassword"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vehicles",
+					"item": [
+						{
+							"name": "Add Vehicle",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var requestBody = JSON.parse(pm.request.body.raw);",
+											"var vehicleNo = requestBody.identifier;",
+											"pm.environment.set(\"vehicleNo\", vehicleNo);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"identifier\": \"TEZ777\",\n    \"carMake\": null,\n    \"accessType\": \"LPR\",\n    \"vehicleType\": null,\n    \"isDefault\": 1,\n    \"shareable\": 0,\n    \"externalIdentifier\": null,\n    \"countryLabel\": \"mebal\",\n    \"fuelType\": null,\n    \"displayName\": \"\",\n    \"status\": null,\n    \"isQueueUploadRequired\": false,\n    \"color\": null,\n    \"model\": null,\n    \"rentalExpiryTime\": null,\n    \"queueUploadRequired\": false\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/accountIdentification",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"accountIdentification"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Vehicle Info",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessType\": \"LPR\",\n    \"identifier\": \"{{vehicleNo}}\",\n    \"isActive\": 1,\n    \"carMake\": null,\n    \"displayName\": null,\n    \"isDefault\": 0,\n    \"shareable\": 0,\n    \"countryLabel\": null,\n    \"reason\": null,\n    \"rentalExpiryTime\": \"2025-01-01T12:30:00.000Z\",\n    \"fuelType\": null\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/accountIdentification",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"accountIdentification"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Validate Vehicle",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"accessType\": \"LPR\",\n    \"accessTypeIdentifier\": \"{{vehicleNo}}\",\n    \"isCorporate\": null\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/accountIdentification/validate",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"accountIdentification",
+										"validate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Vehicle Rules",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/vehicle/rules",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"vehicle",
+										"rules"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "My Sessions",
+					"item": [
+						{
+							"name": "Parking Session",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sessionId\": 0,\n    \"parkingLotId\": 6531,\n    \"referenceId\": null,\n    \"cpmsSourceKey\": null,\n    \"sessionCheckInTime\": \"2024-07-22T08:20:34.000Z\",\n    \"sessionCheckOutTime\": null,\n    \"paymentMethod\": null,\n    \"paymentType\": null,\n    \"parkingSessionStatus\": null,\n    \"paymentGateway\": null,\n    \"bayId\": null,\n    \"special\": null,\n    \"reason\": null,\n    \"externalSessionId\": null,\n    \"entryLaneId\": null,\n    \"exitLaneId\": null,\n    \"totalAmountInCents\": null,\n    \"consumerIdentificationId\": null,\n    \"consumerUserId\": 672890,\n    \"paymentGatewayid\": null,\n    \"paymentGatewayOrderId\": null,\n    \"paymentGatewayReferenceId\": null,\n    \"currencyCode\": null,\n    \"consumerUserPaymentId\": 26536,\n    \"customerToken\": null,\n    \"vehicleNumber\": \"BCA232\",\n    \"parkingPassId\": null,\n    \"serialNumber\": null,\n    \"userVehicleId\": null,\n    \"phoneNumber\": null,\n    \"checkinValetName\": null,\n    \"parkingId\": 2222334,\n    \"companyId\": null,\n    \"scheduledSessionCheckInTime\": \"2024-07-22T08:20:34.000Z\",\n    \"scheduledSessionCheckOutTime\": \"2024-07-22T09:20:34.000Z\",\n    \"entryChannel\": \"CONSUMER\",\n    \"exitChannel\": null,\n    \"entryChannelId\": null,\n    \"exitChannelId\": null,\n    \"parkingSessionType\": \"STP_BOOKING\",\n    \"eventType\": null,\n    \"consumerProfileId\": 72672,\n    \"checkoutValetName\": null,\n    \"consumerUserIdentifier\": null,\n    \"deleted\": null,\n    \"promotionId\": \"0\",\n    \"promotionName\": null,\n    \"promotionType\": null,\n    \"accessType\": \"CONSUMERAPP\",\n    \"accessChannel\": null,\n    \"comment\": null,\n    \"isOfflineSupport\": null,\n    \"entryAccountExternalIdentifier\": null,\n    \"exitAccountExternalIdentifier\": null,\n    \"isFleetSession\": null,\n    \"tariffId\": 175,\n    \"tag\": \"123\",\n    \"tariffEngine\": null,\n    \"parkingPaymentType\": null,\n    \"isAutoApplyPromotion\": false,\n    \"isLiveNotificationRequired\": false,\n    \"offerDiscountType\": \"PROMOTION\",\n    \"discountCardMasterName\": null,\n    \"isProrationRequired\": 0,\n    \"paygPaymentType\": null,\n    \"paymentSuccessful\": false,\n    \"parentSessionId\": null,\n    \"bankTransferGroupId\": null,\n    \"productType\": \"CONSUMER_APP\",\n    \"isExpressReview\": 0\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/parkingSession",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"parkingSession"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Parking Session",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5060/v1/parkingSession/?consumerId={{consumer_id}}&pageNumber={{page_number}}&pageSize={{page_size}}&status={{status}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5060",
+									"path": [
+										"v1",
+										"parkingSession",
+										""
+									],
+									"query": [
+										{
+											"key": "consumerId",
+											"value": "{{consumer_id}}"
+										},
+										{
+											"key": "pageNumber",
+											"value": "{{page_number}}"
+										},
+										{
+											"key": "pageSize",
+											"value": "{{page_size}}"
+										},
+										{
+											"key": "status",
+											"value": "{{status}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Parking Session v2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/parkingSessionV2?status={{status}}&pageNumber={{page_number}}&pageSize={{page_size}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"parkingSessionV2"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "{{status}}"
+										},
+										{
+											"key": "pageNumber",
+											"value": "{{page_number}}"
+										},
+										{
+											"key": "pageSize",
+											"value": "{{page_size}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Parking Session",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"parkingSessionId\": 54751,\n    \"consumerPaymentId\": 26536,\n    \"consumerProfileId\": 72672,\n    \"accountId\": 672890,\n    \"parkingLotId\": null,\n    \"sessionCheckInTime\": null,\n    \"sessionCheckOutTime\": \"2024-04-04T07:15:40.263Z\",\n    \"sessionDuration\": null,\n    \"amount\": null,\n    \"channelType\": null,\n    \"paymentMode\": null,\n    \"paymentMethod\": null,\n    \"paymentType\": null,\n    \"paymentStatus\": null,\n    \"parkingSessionStatus\": \"COMPLETED\",\n    \"paymentGateway\": null,\n    \"exitConsumerIdentificationId\": null,\n    \"paymentGatewayid\": null,\n    \"paymentGatewayOrderId\": null,\n    \"paymentGatewayReferenceId\": null,\n    \"currencyCode\": null,\n    \"consumerUserPaymentId\": null,\n    \"customerToken\": null,\n    \"exitChannel\": \"CONSUMER\",\n    \"serialNumber\": null,\n    \"entryConsumerIdentifier\": null,\n    \"exitConsumerIdentifier\": null,\n    \"comments\": null,\n    \"entryLaneId\": null,\n    \"exitLaneId\": null,\n    \"eventType\": null,\n    \"entryAccountExternalIdentifier\": null,\n    \"exitAccountExternalIdentifier\": null,\n    \"paymentProcessor\": null,\n    \"accessType\": null,\n    \"isCorporatePay\": null,\n    \"tariffEngine\": null,\n    \"parkingPaymentType\": null,\n    \"isPreAuthReq\": false,\n    \"preAuthAmountInCents\": null,\n    \"isFreeSession\": null,\n    \"isPaymentCheckNotReqForPermitUser\": false,\n    \"isScheduledPayment\": false,\n    \"chargeAfter\": \"2024-03-26T06:32:39.912Z\",\n    \"isPaygReq\": false,\n    \"bankTransferGroupId\": null,\n    \"isInReviewSessionClose\": false,\n    \"checkoutValetName\": null,\n    \"expressSessionPaymentCaptureRequest\": false,\n    \"skidataExternalTransactionReceived\": false,\n    \"expressSessionReconciliationRequest\": false,\n    \"lastChildSession\": true,\n    \"interConnectedSession\": false,\n    \"expressSessionClose\": false,\n    \"amountOverridden\": false,\n    \"externalPayment\": false,\n    \"expressPOSSaleSession\": false,\n    \"cashPayment\": false\n}"
+								},
+								"url": {
+									"raw": "http://internal-apcoa-dev-internal-elb-1674191319.ap-south-1.elb.amazonaws.com:5060/v1/parkingSession/parkingSessionProfile",
+									"protocol": "http",
+									"host": [
+										"internal-apcoa-dev-internal-elb-1674191319",
+										"ap-south-1",
+										"elb",
+										"amazonaws",
+										"com"
+									],
+									"port": "5060",
+									"path": [
+										"v1",
+										"parkingSession",
+										"parkingSessionProfile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Active Parking Session",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5060/v1/parkingSession/?consumerId={{consumer_id}}&pageNumber={{page_number}}&pageSize={{page_size}}&status={{status}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5060",
+									"path": [
+										"v1",
+										"parkingSession",
+										""
+									],
+									"query": [
+										{
+											"key": "consumerId",
+											"value": "{{consumer_id}}"
+										},
+										{
+											"key": "pageNumber",
+											"value": "{{page_number}}"
+										},
+										{
+											"key": "pageSize",
+											"value": "{{page_size}}"
+										},
+										{
+											"key": "status",
+											"value": "{{status}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Payments",
+					"item": [
+						{
+							"name": "All Cards",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/payment",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"payment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"hostedCheckoutId\": \"3y7eRr8s-3ct3R7-ZceyZ6-2k4wjx7F9WYS\",\n    \"countryCode\": null,\n    \"firstName\": \"demoFirst\",\n    \"lastName\": \"demoLast\",\n    \"nonce\": null,\n    \"email\": \"balady-demo@yopmail.com\",\n    \"consumerPaymentMode\": null,\n    \"isPaymentMethodACH\": null,\n    \"paymentMethodId\": null,\n    \"phoneNumber\": null,\n    \"phoneNumberCountryCode\": null,\n    \"status\": null,\n    \"pseudoCardPan\": null,\n    \"cardType\": null,\n    \"truncatedCardPan\": null,\n    \"cardExpiredDate\": null,\n    \"errorCode\": null,\n    \"errorMessage\": null,\n    \"customerMessage\": null,\n    \"mandateIdentification\": null,\n    \"mandateStatus\": null,\n    \"creditorIdentifier\": null,\n    \"iban\": null,\n    \"bic\": null,\n    \"storeTempCard\": false,\n    \"languageCode\": null,\n    \"currencyCode\": null,\n    \"consumerId\": null,\n    \"metaData\": null,\n    \"referenceNumber\": null,\n    \"companyId\": null,\n    \"entityId\": null,\n    \"entityType\": null,\n    \"zipcode\": null,\n    \"setDefault\": false,\n    \"paymentGatewayId\": null,\n    \"alternateGateway\": 0,\n    \"posCardSessionId\": null,\n    \"parkingLotId\": null,\n    \"posSaleTransactionId\": null,\n    \"posGatewayReferenceId\": null,\n    \"customerToken\": null,\n    \"permanentToken\": false,\n    \"tapAndParkFlow\": false\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/payment?status={{status}}&consumerId={{consumer_id}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"payment"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "{{status}}"
+										},
+										{
+											"key": "consumerId",
+											"value": "{{consumer_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Favorites",
+					"item": [
+						{
+							"name": "Add Favourite Parking",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"parkingIdList\":[2222328]}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumers/favourite/add/parking",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumers",
+										"favourite",
+										"add",
+										"parking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Favorite Parking",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseBody = pm.response.json();",
+											"var parkingId = responseBody.favouriteParkingDetails[0].parkingId;",
+											"pm.environment.set(\"parking_id\", parkingId);",
+											"",
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumers/favourite/parking",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumers",
+										"favourite",
+										"parking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Remove Favourite Parking",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumers/favourite/remove/{{parking_id}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumers",
+										"favourite",
+										"remove",
+										"{{parking_id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Promotions/Get Free Parking",
+					"item": [
+						{
+							"name": "Generate Referral Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/referralCode",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"referralCode"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "OTP",
+					"item": [
+						{
+							"name": "Generate OTP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var responseBody = pm.response.json();",
+											"var identifierCode = responseBody.identifierCode;",
+											"pm.environment.set(\"identifierCode\", identifierCode);",
+											"",
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"phoneNumber\": \"9969942485\",\n    \"phoneNumberCountryCode\": \"+91\",\n    \"requestType\": \"ACCOUNT_UPDATE\",\n    \"deviceType\": \"Android\",\n    \"referralCode\": \"BD7HLR\",\n    \"locationCode\": \"DE\",\n    \"promotionsEnabled\": 0\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v2/consumer/generateOTP",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v2",
+										"consumer",
+										"generateOTP"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify OTP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"otpCode\": \"852302\",\n    \"identifierCode\": \"{{identifierCode}}\",\n    \"phoneNumber\": \"9004050396\",\n    \"phoneNumberCountryCode\": \"+91\",\n    \"deviceType\": \"ANDROID\",\n    \"referralCode\": null,\n    \"locationCode\": \"NM\",\n    \"promotionsEnabled\": null,\n    \"languageCode\": null,\n    \"requestType\": \"ACCOUNT_UPDATE\"\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v2/consumer/verifyOTP",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v2",
+										"consumer",
+										"verifyOTP"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Parking",
+					"item": [
+						{
+							"name": "Access Type",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5050/v1/parking/accessTypeMasterList?idList={{idList}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5050",
+									"path": [
+										"v1",
+										"parking",
+										"accessTypeMasterList"
+									],
+									"query": [
+										{
+											"key": "idList",
+											"value": "{{idList}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Contracted Parking",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumers/contractedParking",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumers",
+										"contractedParking"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tariff List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									},
+									{
+										"key": "x_gmp_correlation_id",
+										"value": ""
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/tariff?parkingLotId={{parking_lot_id}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"tariff"
+									],
+									"query": [
+										{
+											"key": "parkingLotId",
+											"value": "{{parking_lot_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Tariff Breakdown",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									},
+									{
+										"key": "x_language_code",
+										"value": "{{x_language_code}}"
+									},
+									{
+										"key": "x_auth_request_type",
+										"value": "{{x_auth_request_type}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/tariff/tariffBreakDownV2?parentTariffId={{tariff_id}}&parkingLotId={{parking_lot_id}}&entryTime={{entry_time}}&exitTime={{exit_time}}&offerDiscountType={{offerDiscountType}}&parkingSessionId={{parkingSessionId}}&productType={{productType}}&vehicleNumber={{LPR}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"tariff",
+										"tariffBreakDownV2"
+									],
+									"query": [
+										{
+											"key": "parentTariffId",
+											"value": "{{tariff_id}}"
+										},
+										{
+											"key": "parkingLotId",
+											"value": "{{parking_lot_id}}"
+										},
+										{
+											"key": "entryTime",
+											"value": "{{entry_time}}"
+										},
+										{
+											"key": "exitTime",
+											"value": "{{exit_time}}"
+										},
+										{
+											"key": "offerDiscountType",
+											"value": "{{offerDiscountType}}"
+										},
+										{
+											"key": "parkingSessionId",
+											"value": "{{parkingSessionId}}"
+										},
+										{
+											"key": "productType",
+											"value": "{{productType}}"
+										},
+										{
+											"key": "vehicleNumber",
+											"value": "{{LPR}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "Create Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": null,\n    \"emailAddress\": \"testing_demo@yopmail.com\", // in email format, max length 75\n    \"profileName\": \"BUSINESS\",\n    \"consumerUserProfilePreferenceList\": [\n        {\n            \"id\": null,\n            \"entityType\": null,\n            \"entityId\": null\n        }\n    ],\n    \"isDefault\": 0,\n    \"phoneNumber\": null,\n    \"phoneNumberCountryCode\": null,\n    \"subCorporateId\": null,\n    \"externalId\": null,\n    \"businessName\": \"\",\n    \"vatId\": \"\",\n    \"costCenterId\": \"\",\n    \"businessAddress\": \"\",\n    \"isLinked\": null,\n    \"auditUserType\": null\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/profile",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Account Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									},
+									{
+										"key": "x_gmp_correlation_id",
+										"value": ""
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Edit Account Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 672890,\n    \"email\": null, // in email format, max length 75\n    \"firstName\": \"demoFirst\", // in alpha characters, length upto 60\n    \"lastName\": \"demoLast\", // in alpha characters, length upto 60\n    \"phoneNumberCountryCode\": null,\n    \"phoneNumber\": null,\n    \"imageUrl\": null,\n    \"promotionsEnabled\": null,\n    \"isPaymentPendingOrFailed\": null,\n    \"pushEnabled\": null,\n    \"languageCode\": \"en\",\n    \"isPaymentCardAdded\": null,\n    \"isRefererRewarded\": null,\n    \"isAutomaticPayment\": null,\n    \"modifyPendingOrFailedCountBy\": null,\n    \"modifySuccessfulSessionCountCountBy\": null,\n    \"updateActiveSessionsBy\": null,\n    \"password\": null,\n    \"tncVersion\": null,\n    \"consumerUserStatus\": null,\n    \"acceptTnC\": null,\n    \"acceptDataPolicy\": null,\n    \"updateVasFailedPaymentCount\": null,\n    \"gstNumber\": null,\n    \"paygInvoiceName\": null,\n    \"appliedReferralCode\": null,\n    \"parkingSessionId\": null\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Fetch Consumer Profile",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/profile",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Device",
+					"item": [
+						{
+							"name": "Add Device Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 200', function () {",
+											"    pm.response.to.have.status(200);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									},
+									{
+										"key": "x_device_id",
+										"value": "",
+										"type": "text"
+									},
+									{
+										"key": "x_app_version",
+										"value": "",
+										"type": "text"
+									},
+									{
+										"key": "x_os_version",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"pushEnabled\": 1,\n    \"deviceMake\": \"Google\",\n    \"deviceModel\": \"sdk_gphone64_arm64\",\n    \"operatingSystem\": \"Android\",\n    \"osVersion\": null,\n    \"appVersion\": null,\n    \"deviceLanguage\": null\n}"
+								},
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/device?consumerId={{consumer_id}}",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"device"
+									],
+									"query": [
+										{
+											"key": "consumerId",
+											"value": "{{consumer_id}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"item": [
+						{
+							"name": "Logout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test('Response status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x_gmp_tenant",
+										"value": "{{tenant}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "{{content-type}}"
+									},
+									{
+										"key": "authorization",
+										"value": "Bearer {{auth_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{host_url}}:5000/authentication/v1/consumer/logout",
+									"host": [
+										"{{host_url}}"
+									],
+									"port": "5000",
+									"path": [
+										"authentication",
+										"v1",
+										"consumer",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

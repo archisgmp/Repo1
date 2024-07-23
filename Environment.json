@@ -1,0 +1,169 @@
+{
+	"id": "5d518f02-62b6-4762-9ff1-0a565758d931",
+	"name": "devEnv",
+	"values": [
+		{
+			"key": "host_url",
+			"value": "http://internal-apcoa-dev-internal-elb-1674191319.ap-south-1.elb.amazonaws.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tenant",
+			"value": "gmp",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "email",
+			"value": "alt.xk-eazdwx1@yopmail.com",
+			"enabled": true
+		},
+		{
+			"key": "password",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "auth_token",
+			"value": "nFkS73aYmF8BsTg2pVL0T2E5WOrPhUpq0njsc32G/nmxG39FuleYVSM8Y4CzcqjSrpX/M6tjo3gRfKU1jgbAP0IHrC4O6Tqgn7NZmXXtjeEgp2qb/GNK9BuxJSfSxr4C+K3zGnozfpWm1vEDKQvrWJdOhGx41fmMVtNjl12UXYsaYSj+3p4HuYTgb9K75WXZl7d2M9EjFSRmmP+rqMiuYsJTa2lG4pOOuZDbGc4OvLT7v/bxSVFVVuY7KPC7cgo30iYQTak1Wkrk40A2yk3fS4J44bUObzSwQE1pGPYOPm9JbuSHqqfWt2kpvt2rHF/2cJ04PW3PhrDnsHGK1NSOcYjMIvQIurnbKVMlrm6a1jDcdZv2pBzTnkOSiiZdR+bGQCThNDEeQiZ6yItcz5fNnHhPsq4XQ1zb0xP0+zitHBhsDSZxy4zxudaHsH7A2ULExAJHLS68LpPHRBNxzbpC74704rDoC/R7Cfolt1ovLqHWrldwJXbt4OE2blMWEbHX7fVPsMqVL2qyYMpzP51kuABXjyPD8p+u9N7DGapzDhzF/RSa5oRfgtKYgaP6bp6O",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "x_language_code",
+			"value": "en",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "field_type",
+			"value": "EMAIL",
+			"enabled": true
+		},
+		{
+			"key": "new_email",
+			"value": "alt.fl-6vrvklra@yopmail.com",
+			"enabled": true
+		},
+		{
+			"key": "consumer_id",
+			"value": "672890",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "page_number",
+			"value": "1",
+			"enabled": true
+		},
+		{
+			"key": "page_size",
+			"value": "10",
+			"enabled": true
+		},
+		{
+			"key": "status",
+			"value": "ACTIVE",
+			"enabled": true
+		},
+		{
+			"key": "accessType",
+			"value": "LPR",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "content-type",
+			"value": "application/x-www-form-urlencoded",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "idList",
+			"value": "20%2C20%2C19",
+			"enabled": true
+		},
+		{
+			"key": "parking_lot_id",
+			"value": "6482",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "tariff_id",
+			"value": "1129",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "entry_time",
+			"value": "04%2F04%2F2024%2007%3A21",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "exit_time",
+			"value": "04%2F05%2F2024%2007%3A50",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "offerDiscountType",
+			"value": "PROMOTION",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "parkingSessionId",
+			"value": "13024942",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "productType",
+			"value": "CONSUMER_APP",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "LPR",
+			"value": "DEMO11",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "accountType",
+			"value": "CONSUMER",
+			"enabled": true
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "vehicleNo",
+			"value": "",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "parking_id",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "identifierCode",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2024-07-23T07:42:49.860Z",
+	"_postman_exported_using": "Postman/11.4.0"
+}
