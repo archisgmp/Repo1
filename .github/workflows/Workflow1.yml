@@ -31,10 +31,10 @@ jobs:
         id: timestamp
         run: echo "TIMESTAMP=$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
          
-      - name: Running Postman Collection 1 and generating JUnit XML report
+      - name: Running Postman Collection 2 with environment variables and generating JUnit XML report
         run: |
           mkdir -p SampleArtifact
-          newman run "Collection1.json" -r junit --reporter-junit-export "SampleArtifact/report_${{ env.TIMESTAMP }}.xml" || echo "Collection1 failed" >> SampleArtifact/error_${{ env.TIMESTAMP }}.log
+          newman run "Collection2.json" -e "Environment.json" -r junit --reporter-junit-export "SampleArtifact/report_${{ env.TIMESTAMP }}.xml" || echo "Collection2 failed" >> SampleArtifact/error_${{ env.TIMESTAMP }}.log
 
       - name: Listing files in SampleArtifact directory
         run: ls -al SampleArtifact
@@ -56,12 +56,13 @@ jobs:
       - name: Publishing JUnit XML Report
         uses: actions/upload-artifact@v4
         with:
-          name: JUnit Report for Collection1
+          name: JUnit Report for Collection2
           path: SampleArtifact/report_${{ env.TIMESTAMP }}.xml
 
       - name: Publishing error log (if any)
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: Error Log for Collection1
+          name: Error Log for Collection2
           path: SampleArtifact/error_${{ env.TIMESTAMP }}.log
+
