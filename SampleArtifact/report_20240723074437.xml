@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Integration Tests" tests="35" time="0.000">
+  <testsuite name="App / Register / Sign Up" id="cf188842-82f3-4068-987e-e225811f3ffb" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Register / Sign Up.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:1).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Login / Email Login" id="62ea7cb9-86b0-426b-be84-108aaea29685" timestamp="2024-07-23T07:44:50.479Z" tests="0" failures="0" errors="2" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+testScriptError: "undefined" is not valid JSON
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="App / Login / Forgot Password" id="5003e5b2-596b-4fc6-a5f9-bc97f531162c" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Login / Forgot Password.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:3).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Login / Social Login" id="f2069c50-e4e6-4973-a410-1e832a1fc8e1" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Login / Social Login.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:4).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Profile / Add/Edit Profile Info" id="0dad1206-c85b-4a16-80e8-50d0b3fa6a4f" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Profile / Add/Edit Profile Info.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:5).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Profile / Update Email" id="73783768-1ff1-4b2e-92ee-ca28fb8323cf" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Profile / Update Email.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:6).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Profile / Verify Email" id="62247c69-1551-4a03-97c0-b8aa50f938b4" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5020
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Profile / Verify Email.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:7).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Profile / Change Password" id="78b7764f-4509-40b4-95f8-00cfc144ee1e" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Profile / Change Password.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:8).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Vehicles / Add Vehicle" id="1d041a59-edc2-48c7-be2c-d2aac7aa9fa4" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Vehicles / Add Vehicle.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:9).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Vehicles / Edit Vehicle Info" id="38a4c93c-c9c3-4111-8c27-68d4a2aa4d93" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Vehicles / Edit Vehicle Info.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:10).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Vehicles / Validate Vehicle" id="5f1468f3-26c6-4321-abfb-a79fb17bf246" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Vehicles / Validate Vehicle.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:11).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Vehicles / Vehicle Rules" id="faecdc98-ebdb-40af-9fbb-7985824218c8" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Vehicles / Vehicle Rules.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:12).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / My Sessions / Parking Session" id="e718ae28-850f-4fd5-8c5b-d258d04336cb" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / My Sessions / Parking Session.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:13).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / My Sessions / Parking Session" id="efe6ba89-8106-4e10-ba5b-e8efa2ae5b9d" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5060
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / My Sessions / Parking Session.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:14).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / My Sessions / Parking Session v2" id="eeb239e4-5b6f-454d-84e0-3d227d598e72" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / My Sessions / Parking Session v2.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:15).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / My Sessions / Edit Parking Session" id="c05cdac3-9b39-4b17-97b9-5e1895bf5220" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5060
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / My Sessions / Edit Parking Session.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:16).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / My Sessions / Active Parking Session" id="a5b1554f-ea90-4714-8a8a-dc6c4651253f" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5060
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / My Sessions / Active Parking Session.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:17).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Payments / All Cards" id="704a28de-147c-41d7-a5e3-7301ae1617fc" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Payments / All Cards.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:18).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Payments / Add Card" id="ebe45ec6-380c-41f3-891c-2e42047f2a53" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Payments / Add Card.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:19).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Favorites / Add Favourite Parking" id="381e870a-c8d3-42a5-9825-0264c4b9a0e9" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Favorites / Add Favourite Parking.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:20).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Favorites / Fetch Favorite Parking" id="8c4d499f-f88b-415e-88f4-b76710d05d4a" timestamp="2024-07-23T07:44:50.479Z" tests="0" failures="0" errors="2" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+testScriptError: "undefined" is not valid JSON
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="App / Favorites / Remove Favourite Parking" id="ee6818e1-5c03-478a-9b92-cfb34bed4d35" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Favorites / Remove Favourite Parking.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:22).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Promotions/Get Free Parking / Generate Referral Code" id="ef18ead2-db87-44cd-9262-0ff02b1acb23" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Promotions/Get Free Parking / Generate Referral Code.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:23).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / OTP / Generate OTP" id="155f3e0e-1bfe-4c49-955b-a63725297359" timestamp="2024-07-23T07:44:50.479Z" tests="0" failures="0" errors="2" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+testScriptError: "undefined" is not valid JSON
+---
+]]></system-err>
+  </testsuite>
+  <testsuite name="App / OTP / Verify OTP" id="94e99083-6c64-4c09-9016-fc6d5999c4d9" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / OTP / Verify OTP.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:25).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Parking / Access Type" id="cd55359a-74fd-4605-bbc2-f5d38dad0a2b" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5050
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Parking / Access Type.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:26).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Parking / Contracted Parking" id="1d19f9c3-3323-40b2-8c0c-0394325dbb16" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Parking / Contracted Parking.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:27).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Parking / Tariff List" id="4fe857b0-4bea-4baa-a241-a2986119a2af" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Parking / Tariff List.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:28).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Parking / Tariff Breakdown" id="e7a7a469-afeb-455b-a1b0-26612c130d9a" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Parking / Tariff Breakdown.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:29).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Account / Create Account" id="b801b713-881a-43c1-899f-ce2d3907bbd6" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Account / Create Account.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:30).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Account / Fetch Account Details" id="cdbb01af-d74d-441c-9089-e032fb6408d9" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Account / Fetch Account Details.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:31).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Account / Edit Account Details" id="41e9c647-94fe-44d2-b935-b670fcce3455" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Account / Edit Account Details.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:32).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Account / Fetch Consumer Profile" id="540f824d-8f71-4298-8adf-39e7b370e1ae" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Account / Fetch Consumer Profile.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:33).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Device / Add Device Details" id="dc320ba3-7f60-4ad1-b2ff-952502fd915b" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 200" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Device / Add Device Details.]]>
+        <![CDATA[Test description: Response status code is 200.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:34).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="App / Logout / Logout" id="d60bbd1c-3c70-43e0-993d-f501eea2fc12" timestamp="2024-07-23T07:44:50.479Z" tests="1" failures="1" errors="1" time="0.000">
+    <system-err><![CDATA[Iteration: 0
+RequestError: Error: connect ETIMEDOUT 21.0.0.225:5000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1607:16)
+
+---
+]]></system-err>
+    <testcase name="Response status code is 204" time="0.000" classname="IntegrationTests">
+      <failure type="AssertionFailure" message="expected PostmanResponse{ …(5) } to have property 'code'">
+        <![CDATA[Failed 1 times.]]>
+        <![CDATA[Collection JSON ID: 0bad55cd-7768-404f-a196-e3ae251f35c9.]]>
+        <![CDATA[Collection name: Integration Tests.]]>
+        <![CDATA[Request name: App / Logout / Logout.]]>
+        <![CDATA[Test description: Response status code is 204.]]>
+        <![CDATA[Error message: expected PostmanResponse{ …(5) } to have property 'code'.]]>
+        <![CDATA[Stacktrace: AssertionError: expected PostmanResponse{ …(5) } to have property 'code'
+   at Object.eval sandbox-script.js:1:35).]]>
+      </failure>
+    </testcase>
+  </testsuite>
+</testsuites>
